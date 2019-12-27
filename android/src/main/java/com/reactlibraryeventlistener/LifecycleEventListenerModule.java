@@ -22,22 +22,16 @@ public class LifecycleEventListenerModule extends ReactContextBaseJavaModule imp
 
     @Override
     public void onHostResume() {
-        reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit("onResume", null);
+        getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onResume", null);
     }
 
     @Override
     public void onHostPause() {
-        reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit("onPause", null);
+        getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onPause", null);
     }
 
     @Override
     public void onHostDestroy() {
-        reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit("onDestroy", null);
+        getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onDestroy", null);
     }
 }
