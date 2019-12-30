@@ -1,5 +1,7 @@
-import { NativeModules } from 'react-native';
+import { NativeModules, NativeEventEmitter } from 'react-native';
 
 const { LifecycleEventListener } = NativeModules;
 
-export default LifecycleEventListener;
+const EventEmitter = new NativeEventEmitter(LifecycleEventListener);
+
+export default EventEmitter;
