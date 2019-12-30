@@ -1,9 +1,5 @@
 package com.reactlibraryeventlistener;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.FeatureInfo;
-import android.content.pm.PackageManager;
 import android.widget.Toast;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -28,25 +24,24 @@ public class LifecycleEventListenerModule extends ReactContextBaseJavaModule imp
 
     @ReactMethod
     public void showAlertToast(String text) {
-        Context context = getReactApplicationContext();
-        Toast.makeText(context, text, Toast.LENGTH_LONG).show();
+        Toast.makeText(reactContext, text, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onHostResume() {
-        getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onResume",
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onResume",
                 null);
     }
 
     @Override
     public void onHostPause() {
-        getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onPause",
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onPause",
                 null);
     }
 
     @Override
     public void onHostDestroy() {
-        getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onDestroy",
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onDestroy",
                 null);
     }
 }
