@@ -13,13 +13,11 @@
 ```javascript
 import LifecycleEventListener from 'react-native-lifecycle-event-listener';
 
-LifecycleEventListener.addEventListener('onResume', () => {
-  console.log('App Resumed');
-});
-LifecycleEventListener.addEventListener('onPause', () => {
-  console.log('App Paused');
-});
-LifecycleEventListener.addEventListener('onDestroy', () => {
-  console.log('App Destroyed');
-});
+componentDidMount(){
+  const listener = LifecycleEventListener.addListener('onDestroy', () => {
+    console.log('destroyed'); // "someValue"
+    ToastAndroid.show('Destroyed', ToastAndroid.SHORT);
+    listener.remove('onDestroy');
+  });
+}
 ```
